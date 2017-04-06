@@ -44,4 +44,3 @@ Splits dataset into validation and training sets
 
 ## preprocess_augmentation.py
 Creates the batch data to be use for training, aswell as augmented brightness, and flip image in the left/right direction.
-
