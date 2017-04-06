@@ -28,4 +28,21 @@ This project requires **Python 3.5** and the following Python libraries installe
 - [Keras](http://tensorflow.org)
 - [Matplotlib](http://matplotlib.org/)
 
+## Details About Files In This Directory
+
+### drive.py
+runs model with the simulator 
+                                                                                                                          
+### main.py
+trains the data seti
+
+### model.py
+contains the model architecture
+
+## load_dataset.py
+Splits dataset into validation and training sets 
+
+## preprocess_augmentation.py
+Creates the batch data to be use for training, aswell as
+augmented brightness, and flip image in the left/right direction.
 
