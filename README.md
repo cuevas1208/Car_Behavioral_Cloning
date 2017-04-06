@@ -17,7 +17,6 @@ Dataset
 The simulator will use the steering angles outs from the model to drive a car around a track.
 The simulator has a setting to record data to train the model. The data set consists of image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
 
-
 Dependencies
 ---
 This project requires **Python 3.5** and the following Python libraries installed:
@@ -27,6 +26,7 @@ This project requires **Python 3.5** and the following Python libraries installe
 - [scikit-learn](http://scikit-learn.org/)
 - [Keras](http://tensorflow.org)
 - [Matplotlib](http://matplotlib.org/)
+
 
 ## Details About Files In This Directory
 
