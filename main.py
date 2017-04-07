@@ -23,8 +23,8 @@ from model import *
 from load_dataset import *
 
 #Parameters
-left_stcor = 0.28
-right_stcor = -0.28
+left_stcor = 0.22
+right_stcor = -0.22
 imgN = 5
 
 #Load Data img and CSV
