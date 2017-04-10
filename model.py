@@ -25,27 +25,46 @@ def get_model():
     # Normalize the features using Min-Max scaling centered around zero and reshape
     model.add(Lambda(lambda x: (x/125.5) - 1., input_shape=(160, 320, 3), output_shape=(160, 320, 3)))
     # Image is crop to left only the important features of the image
-    model.add(Cropping2D(cropping=((70,25),(0,0))))
+    model.add(Cropping2D(cropping=((69,25),(0,0))))
+    print (model.output_shape)
+    
+    #66, 320, 3
+    model.add(Convolution2D(24, 5, 5, activation='relu'))
+    model.add(ZeroPadding2D(padding=(0, 1)))
+    model.add(MaxPooling2D(pool_size=(3,3),strides=(2,4)))
+    model.add(ELU())
+    print (model.output_shape)
 
-    model.add(Convolution2D(24, 5, 5, subsample=(4, 4), border_mode="same"))
+    #30, 79, 24
+    model.add(Convolution2D(36, 5, 5))
+    model.add(ZeroPadding2D(padding=(0, 1)))
+    model.add(MaxPooling2D(pool_size=(3,3),strides=(1,2)))
     model.add(ELU())
-    model.add(Convolution2D(36, 5, 5, subsample=(2, 2), border_mode="same"))
-    model.add(ELU())
-    model.add(Convolution2D(48, 5, 5, subsample=(2, 2), border_mode="same"))
-    model.add(ELU())
-    model.add(Convolution2D(64, 3, 3, subsample=(2, 2), border_mode="same"))
-    model.add(ELU())
-    model.add(Convolution2D(64, 3, 3, subsample=(2, 2), border_mode="same"))
+    print (model.output_shape)
 
+    #24, 38, 36
+    model.add(Convolution2D(48, 5, 5))
+    model.add(ZeroPadding2D(padding=(0, 1)))
+    model.add(MaxPooling2D(pool_size=(3,3),strides=(2,2)))
+    model.add(ELU())
+    print (model.output_shape)
+
+    #9, 17 
+    model.add(Convolution2D(64, 3, 3, subsample=(2, 2)))    
+    model.add(ELU())
+    print (model.output_shape)
+    
+    #input = 5,8,64  output = 2,3,128 flat = 768
+    model.add(Convolution2D(128, 2, 4, subsample=(2, 2)))
+    print (model.output_shape)    
     model.add(Flatten())
     model.add(Dropout(.2))
     model.add(ELU())
-
-    model.add(Dense(1164))
+    model.add(Dense(384))
     model.add(Dropout(.2))
     model.add(ELU())
 
-    model.add(Dense(100))
+    model.add(Dense(96))
     model.add(Dropout(.2))
     model.add(ELU())
 

@@ -60,34 +60,15 @@ def send_control(steering_angle, throttle):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Remote Driving')
-    parser.add_argument('model', type=str,
-    help='Path to model definition json. Model weights should be on the same path.')
-    args = parser.parse_args()
-    """with open(args.model, 'r') as jfile:
-        # NOTE: if you saved the file by calling json.dump(model.to_json(), ...)
-        # then you will have to call:
-        #
-        #   model = model_from_json(json.loads(jfile.read()))\
-        #
-        # instead.
-        model = model_from_json(jfile.read())
-
-
-    model.compile("adam", "mse")
-    weights_file = args.model.replace('json', 'h5')
-    model.load_weights(weights_file)
-    """
     # load json and create model
-    json_file = open('model.json', 'r')
+    json_file = open('steering_model/model.json', 'r')
     #loaded_model_json = json.loads(json_file.read())
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
     model.compile("adam", "mse")
-
     # load weights into new model
-    model.load_weights("model.h5")
+    model.load_weights("steering_model/model.h5")
 
     # wrap Flask application with engineio's middleware
     app = socketio.Middleware(sio, app)
