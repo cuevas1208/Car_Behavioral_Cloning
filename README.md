@@ -2,7 +2,7 @@
 
 Overview
 ---
-This project, deep neural networks and convolutional neural networks tools are used to clone driving behavior.
+This project uses deep neural networks and convolutional neural networks to clone driving behavior.
 The model is trained, validated and tested using Keras API. The model will output a steering angle to an autonomous vehicle.
 ##### For more information about this project visit the [Wiki page](https://github.com/cuevas1208/Car_Behavioral_Cloning/wiki)
 
